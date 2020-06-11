@@ -1,0 +1,58 @@
+pipeline {
+    agent any
+    stages {
+        stage('Unit Test') {
+            steps {
+                bat 'gradlew clean test'
+            }
+            post {
+                always {
+                    publishHTML(target:[
+            allowMissing: false,
+            alwaysLinkToLastBuild: false,
+            keepAll: true,
+            reportDir: 'app/build/reports/tests/testReleaseUnitTest',
+            reportFiles: 'index.html',
+            reportName: 'Test Results'
+          ])
+                }
+            }
+        }
+        stage('Static Code Analysis') {
+            steps {
+                bat 'gradlew clean lint'
+            }
+            post {
+                always {
+                    publishHTML(target:[
+            allowMissing: false,
+            alwaysLinkToLastBuild: false,
+            keepAll: true,
+            reportDir: 'app/build/reports',
+            reportFiles: 'lint-results.html',
+            reportName: 'Code Analysis'
+          ])
+                }
+            }
+        }
+        stage('Build') {
+            steps {
+                bat 'gradlew build -x test -x lint'
+            }
+        }
+        //a55a1961526e5c8ec9570a79d1d01cfbcd808358
+        stage('Publish to App Center') {
+            environment {
+                APPCENTER_API_TOKEN = credentials('appcenter-api-token')
+            }
+            steps {
+                appCenter apiToken: APPCENTER_API_TOKEN,
+            ownerName: 'utstulsy-publicis',
+            appName: 'android-test',
+            pathToApp: 'app/build/outputs/apk/release/app-release-unsigned.apk',
+            distributionGroups: 'Collaborators, internal',
+            buildVersion: "${env.BUILD_ID}"
+            }
+        }
+    }
+}
