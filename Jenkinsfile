@@ -19,7 +19,10 @@ pipeline {
                       stage('Static Code Analysis') {
                     steps{
                         //bat 'gradlew lint'
-                        appscan application: '75d946aa-1f67-4f74-a4c3-dc9e9341d28f', credentials: 'HCL APP SCAN', name: 'HCL APP SCAN', scanner: mobile_analyzer(hasOptions: false, target: 'app/build/outputs/apk/debug/app-debug.apk'), type: 'Mobile Analyzer'
+                        appscan application: '75d946aa-1f67-4f74-a4c3-dc9e9341d28f',
+                                   credentials: 'HCL APP SCAN', name: 'HCL APP SCAN',
+                                  // scanner: mobile_analyzer(hasOptions: false, target: 'app/build/outputs/apk/debug/app-debug.apk'),
+                                   type: 'Mobile Analyzer'
                     }
                 }
                /* stage('Publish to App Center') {
