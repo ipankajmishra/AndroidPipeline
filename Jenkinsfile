@@ -21,7 +21,7 @@ pipeline {
                         //bat 'gradlew lint'
                         appscan application: '75d946aa-1f67-4f74-a4c3-dc9e9341d28f',
                                    credentials: 'HCL APP SCAN', name: 'HCL APP SCAN',
-                                   scanner: mobile_analyzer(hasOptions: false, target: 'app/build/outputs/apk/debug/app-debug.apk'),
+                                   scanner: mobile_analyzer(hasOptions: false, target: 'C:/Program%20Files%20(x86)/Jenkins/workspace/My%20First%20Android%20Pipeline/app/build/outputs/apk/debug/app-debug.apk'),
                                    type: 'Mobile Analyzer'
                     }
                 }
