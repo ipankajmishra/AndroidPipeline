@@ -19,9 +19,10 @@ pipeline {
                       stage('Static Code Analysis') {
                     steps{
                         //bat 'gradlew lint'
-                        appscan application: '75d946aa-1f67-4f74-a4c3-dc9e9341d28f',
+                        appscan application: 'c970c5a2-a6dc-4019-9231-a5156f584d45',
                                    credentials: 'HCL APP SCAN', name: 'HCL APP SCAN',
-                                   scanner: mobile_analyzer(hasOptions: false, target: 'C:/Program Files (x86)/Jenkins/workspace/My First Android Pipeline/app/build/outputs/apk/debug/app-debug.apk'),
+                                   scanner: mobile_analyzer(hasOptions: false,
+                                                            target: 'C:/Program Files (x86)/Jenkins/workspace/AndroidProject/app/build/outputs/apk/debug/app-debug.apk'),
                                    type: 'Mobile Analyzer'
                     }
                 }
