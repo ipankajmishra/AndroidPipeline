@@ -26,7 +26,7 @@ pipeline {
                                    type: 'Mobile Analyzer'
                     }
                 }
-               /* stage('Publish to App Center') {
+                stage('Publish to App Center') {
                     environment {
                         APPCENTER_API_TOKEN = '7943fdb1a13850de26e5f7b67599c3ff87a90cc5'//'bde0c2278c1177b8cbf9ffc34dc106ce7da66b24'
                     }
@@ -37,6 +37,6 @@ pipeline {
                         ownerName: 'pankajmishra', 
                         pathToApp: 'app/build/outputs/apk/debug/app-debug.apk'
                     }
-                }*/
+                }
            }
       }
