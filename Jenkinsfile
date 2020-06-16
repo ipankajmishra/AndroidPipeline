@@ -28,7 +28,7 @@ pipeline {
                         bat 'gradlew clean build -x test'
                     }
                 }
-                      stage('Static Code Analysis') {
+                   /*   stage('Static Code Analysis') {
                     steps{
                         //bat 'gradlew lint'
                         appscan application: 'c970c5a2-a6dc-4019-9231-a5156f584d45',
@@ -49,6 +49,6 @@ pipeline {
                         ownerName: 'pankajmishra', 
                         pathToApp: 'app/build/outputs/apk/debug/app-debug.apk'
                     }
-                }
+                }*/
            }
       }
