@@ -11,6 +11,13 @@ pipeline {
                         bat 'gradlew test'
                     }
                 }
+                      stage("Linting") {
+                    steps{
+                        bat ' gradlew lint'
+                    }
+                }
+                      
+                     
                 stage("Build") {
                     steps {
                         bat 'gradlew clean build -x test'
