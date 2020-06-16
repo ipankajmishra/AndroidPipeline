@@ -15,6 +15,11 @@ pipeline {
                     steps{
                         bat ' gradlew lint'
                     }
+                                 post{
+                                            always{
+                                            androidLint canComputeNew: false, defaultEncoding: '', healthy: '', pattern: '**/lint-results*.xml', unHealthy: ''
+                                            }
+                                 }
                 }
                       
                      
