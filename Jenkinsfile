@@ -10,6 +10,11 @@ pipeline {
                     steps{
                         bat 'gradlew test'
                     }
+                           post{
+                                      always{
+                                      junit 'app/build/test-results/testDebugUnitTest/*.xml'
+                                      }
+                           }
                 }
                       stage("Linting") {
                     steps{
