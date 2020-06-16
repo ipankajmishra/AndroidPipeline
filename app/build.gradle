@@ -28,11 +28,12 @@ android {
     }
     productFlavors {
     }
+    lintOptions {
+        abortOnError false
+        lintConfig file("../lint.xml")
+    }
 }
-lintOptions {
-    abortOnError false
-    lintConfig file("../lint.xml")
-}
+
 
 dependencies {
     // Unit testing dependencies.
